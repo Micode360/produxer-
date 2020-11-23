@@ -48,7 +48,7 @@ const contactForm = document.querySelector('#contact-form'),
 
              function eValidate(e) {
                 e.preventDefault();
-              if(checkFirstNameFunctionality() && checkLastNameFunctionality() && checkEmailFunctionality() && checkSubjectFunctionality() && checkMessageFunctionality()){
+          //    if(checkFirstNameFunctionality() && checkLastNameFunctionality() && checkEmailFunctionality() && checkSubjectFunctionality() && checkMessageFunctionality()){
                   const status = response => {
                     if (response.status >= 200 && response.status < 300) {
                         return Promise.resolve(response)
@@ -79,7 +79,7 @@ const contactForm = document.querySelector('#contact-form'),
                 pageReload();
               }
            
-              }
+          //    }
 
               const pageReload = () => {
                 setTimeout(() => {
@@ -156,7 +156,6 @@ const contactForm = document.querySelector('#contact-form'),
                   }
 
                   function valid(element) {
-                    //element.className = 'valid';
                     element.nextElementSibling.innerHTML = '';
                   }
 

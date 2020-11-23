@@ -41,19 +41,6 @@ app.get('/contacts', (req,res)=>{
  
 
  app.post('/client/message/route',(req,res) => {
-   
-
-  const firstName = req.body.firstName,
-        lastName = req.body.lastName,
-        email = req.body.email,
-        subject = req.body.subject,
-        message = req.body.message;
-
-    if(checkFirstNameFunctionality() 
-    && checkLastNameFunctionality() 
-   && checkEmailFunctionality() 
-    && checkSubjectFunctionality() 
-    && checkMessageFunctionality()){
       let temp = `
       <h3>${req.body.firstName}</h3>
       <h4>${req.body.lastName}</h4>
@@ -71,88 +58,7 @@ app.get('/contacts', (req,res)=>{
   });
 
     main(temp).catch(console.error);
-    }
- 
 
-
-      function checkFirstNameFunctionality() {
-          if(inputTextisEmpty(firstName, 'firstname')) return;
-          if(!justLetters(firstName, 'firstname')) return;
-          return true;
-      }
-
-      function checkLastNameFunctionality(){
-        if(inputTextisEmpty(lastName, 'lastname')) return;
-        if(!justLetters(lastName, 'lastname')) return;
-        return true;
-    }
-
-
-    function checkEmailFunctionality(){
-      if(inputTextisEmpty(email, 'email')) return;
-      if(!emailExactPattern(email, 'email')) return;
-      return true;
-}
-
-
-    function checkSubjectFunctionality(){
-     if(inputTextisEmpty(subject, 'subject')) return;
-     if(!justLetters(subject, 'subject')) return;
-     return true;
- }
-
-
-      function checkMessageFunctionality(){
-          if(inputTextisEmpty(message, 'message')) return;
-          return true;
-      }
-
-
-
-      function inputTextisEmpty(element, identity){
-           if(empty(element)){
-              inValid(element, `Please fill your ${identity}`);
-              return true;
-           }
-           else{
-             valid(element);
-             return false;
-           };
-      }
-
-      function justLetters(element, identity) {
-          var regex = /^[a-zA-Z ]+$/;
-          if(regex.test(element.value)){
-            valid(element) 
-            return true;
-          }
-          else inValid(element,`${identity} must have only letters.`);
-      }
-
-  function emailExactPattern(element, identity){
-    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-     if(regex.test(element)){
-       valid(element);
-       return true;
-     }
-     else inValid(element,`Must match ${identity} exact pattern`);
-}
-
-      function empty(value) {
-          if (value === '') return true;
-          return false;
-        }
-
-        function inValid(element, message) {
-            console.log(message);
-            return;
-        }
-
-        function valid(element) {
-              //return `${element} success`;
-        }
-
-        console.log(firstName.parent);
 }); 
 
 
